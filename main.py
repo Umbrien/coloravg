@@ -20,11 +20,14 @@ for color in colors:
     blue_colors_sum += int(color[4:6], 16)
 
 
+# TODO FIX zero divizion error when no colors provided
 red_colors_average = red_colors_sum / len(colors)
 green_colors_average = green_colors_sum / len(colors)
 blue_colors_average = blue_colors_sum / len(colors)
 
-# TODO FIX TypeError when float
-average_hex = hex(red_colors_average) + hex(green_colors_average) + hex(blue_colors_average)
+# TODO output 00 instead of 0
+average_hex = hex(round(red_colors_average)).replace('0x', '')\
+              + hex(round(green_colors_average)).replace('0x', '')\
+              + hex(round(blue_colors_average)).replace('0x', '')
 
 print(average_hex)
